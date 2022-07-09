@@ -1,0 +1,1 @@
+Date: 2022-07-09 12:00:34s, Time_Cost: 1500s, Epoch: [1/200], Train_PSNR: 28.29, Val_PSNR: 22.32, Val_SSIM: 0.7793
