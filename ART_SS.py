@@ -153,7 +153,9 @@ class ART(object):
         self.KL_div = torch.nn.KLDivLoss()
         self.unlbl_sig = torch.zeros((self.num_unlbl,1)).cuda()
         self.lbl_sig = torch.zeros((self.num_lbl,1)).cuda()
-        self.reject_unlabl = torch.zeros((self.num_unlbl,1)).cuda()
+        self.reject_unlbl = torch.zeros((self.num_unlbl,1)).cuda() #"1" indicates unlabeled image is not rejected and "0" indicates unlabeled image is rejected.
+
+
         self.thrsh_dist = 1000
         self.thrsh_ang = 100000
         self.k_NN = 5
