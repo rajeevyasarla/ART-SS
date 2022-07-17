@@ -157,7 +157,9 @@ class GPStruct(object):
         self.thrsh_dist = self.ART.thrsh_dist
         self.thrsh_ang = self.ART.thrsh_ang
         self.k_NN = self.ART.k_NN
-        self.reject_unlabl = self.ART.reject_unlabl
+        self.reject_unlbl = self.ART.reject_unlbl #"1" indicates unlabeled image is not rejected and "0" indicates unlabeled image is rejected.
+
+
 
 
         # declaring kernel function
@@ -216,7 +218,7 @@ class GPStruct(object):
         B,N,H,W = tensor_mat.shape
         tmp_i = [self.dict_unlbl[i] for i in imgid]
         tensor_vec = tensor_mat.view(-1,self.z_numchnls,1,self.z_height*self.z_width) 
-        multiplier = self.reject_unlabl[tmp_i].data if label_flg==0 else torch.ones((B,1)).cuda()
+        multiplier = self.reject_unlbl[tmp_i].data if label_flg==0 else torch.ones((B,1)).cuda()
         kernel_values =  self.ker_unlbl[tmp_i,:].data if label_flg==0 else self.ker_lbl[tmp_i,:].data
         uncer_sigvalues = self.unlbl_sig[tmp_i].data if label_flg==0 else self.lbl_sig[tmp_i].data
         
