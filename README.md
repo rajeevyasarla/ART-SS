@@ -19,6 +19,7 @@ ART-SS is implemented in the ART_SS.py python file. ART-SS technique can be appl
 
 ## Applying ART-SS to Syn2Real
 Here we apply ART-SS to Syn2Real
+
 Training command 
 ```
 python train_new_comb.py  -train_batch_size 2  -category derain -exp_name <path_to_save_model>  -lambda_GP 0.0015 -epoch_start 0 -version version1
