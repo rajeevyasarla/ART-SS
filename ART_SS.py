@@ -151,14 +151,14 @@ class ART(object):
         self.version = version # version1 is GP SIMO model and version2 is GP MIMO model
         self.kernel_type = kernel_type
         self.KL_div = torch.nn.KLDivLoss()
-        self.unlbl_sig = torch.zeros((self.num_unlbl,1)).cuda()
-        self.lbl_sig = torch.zeros((self.num_lbl,1)).cuda()
+        self.unlbl_sig = torch.zeros((self.num_unlbl,1)).cuda() # aleatoric uncertainty sigma values for unlabeled images
+        self.lbl_sig = torch.zeros((self.num_lbl,1)).cuda() # aleatoric uncertainty sigma values for unlabeled images
         self.reject_unlbl = torch.zeros((self.num_unlbl,1)).cuda() #"1" indicates unlabeled image is not rejected and "0" indicates unlabeled image is rejected.
 
 
         self.thrsh_dist = 1000
-        self.thrsh_ang = 100000
-        self.k_NN = 5
+        self.thrsh_ang = 100000 # ART adtaptive threshold used to reject the unlabeled images
+        self.k_NN = 5 # nerest neighbors in labeled images used to compute similarity indices
 
 
         # declaring kernel function
@@ -179,8 +179,7 @@ class ART(object):
         # paths for loading masks which are used for aleotoric uncertainity
         self.mask_path = './masks/rain' 
         self.mask_names = glob.glob(self.mask_path + '/*.png')
-
-        self.num_M = 4
+        self.num_M = 4 # number of noise masks used to compute aleatoric uncertainty sigma value
 
 
     
